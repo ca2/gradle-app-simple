@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'platform'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "platform.nanoui_example"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dependencies {
+        implementation project(":platform")
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            // Prevent ProGuard/R8 from stripping (not needed for debug normally)
+            minifyEnabled false
+            // Prevents stripping of debug symbols
+            ndk {
+                debugSymbolLevel 'FULL'
+            }
+            packagingOptions {
+                doNotStrip "**/*.so"
+            }
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        // Force all Kotlin stdlib dependencies to one version
+        force "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+        force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"
+    }
+}
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0' // latest compatible
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
