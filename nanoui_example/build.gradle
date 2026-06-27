@@ -3,17 +3,17 @@ plugins {
 }
 
 android {
-    namespace 'platform'
-    compileSdk 36
+    namespace = 'platform'
+    compileSdk = 36
 
     defaultConfig {
-        applicationId "platform.nanoui_example"
-        minSdk 28
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        applicationId = "platform.nanoui_example"
+        minSdk = 28
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     dependencies {
@@ -22,12 +22,12 @@ android {
 
     buildTypes {
         debug {
-            debuggable true
+            debuggable = true
             // Prevent ProGuard/R8 from stripping (not needed for debug normally)
-            minifyEnabled false
+            minifyEnabled = false
             // Prevents stripping of debug symbols
             ndk {
-                debugSymbolLevel 'FULL'
+                debugSymbolLevel = 'FULL'
             }
             packagingOptions {
                 doNotStrip "**/*.so"
@@ -35,16 +35,16 @@ android {
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
 }
 configurations.all {
