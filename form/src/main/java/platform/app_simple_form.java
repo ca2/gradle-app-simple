@@ -4,7 +4,7 @@ package platform;
 import android.os.Bundle;
 
 
-public class app_simple_drawing extends platform.platform.platform.application
+public class app_simple_form extends platform.platform.platform.application
 {
 
 
